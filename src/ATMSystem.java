@@ -8,21 +8,6 @@ public class ATMSystem {
         filesHandler = new fileHandler();
         UsersAccounts = filesHandler.getUserAccounts();
     }
-    public void createNewAccount(String fullName, String phoneNumber, int password, Double initialBalance) {
-        String accountNumber = generateAccountNumber();
-        UserAccount userAccount = new UserAccount(fullName, phoneNumber, password, initialBalance, accountNumber);
-        UsersAccounts.put(accountNumber, userAccount);
-        filesHandler.saveUserAccount(UsersAccounts);
-        System.out.println("Your account created successfully! Your account number is: " + accountNumber);
-    }
-    private String generateAccountNumber() {
-        String accountNumber;
-        Random random = new Random();
-        do {
-            accountNumber = String.valueOf(random.nextInt(9999999));
-        }while(UsersAccounts.containsKey(accountNumber));
-        return accountNumber;
-    }
     public UserAccount login (String accountNumber,int password) {
         UserAccount userAccount = UsersAccounts.get(accountNumber);
         if (userAccount == null) {
@@ -44,14 +29,24 @@ public class ATMSystem {
         }
         return null;
     }
+
+    public void createNewAccount(String fullName, String phoneNumber, int password, Double initialBalance) {
+        String accountNumber = generateAccountNumber();
+        UserAccount userAccount = new UserAccount(fullName, phoneNumber, password, initialBalance, accountNumber);
+        UsersAccounts.put(accountNumber, userAccount);
+        filesHandler.saveUserAccount(UsersAccounts);
+        System.out.println("Your account created successfully! Your account number is: " + accountNumber);
+    }
+
     public void findUser (String accountNumber) {
         UserAccount userAccount = UsersAccounts.get(accountNumber);
         if (userAccount != null) {
             System.out.println("Account owner name: " + userAccount.getFullName());
             System.out.println("Account owner phone number: " + userAccount.getPhoneNumber());
         } else
-            System.out.println("The account is Invalid");
+            System.out.println("The account is Invalid!");
     }
+
     public void PerformTransactions (UserAccount account, double amount, int numberOfTransaction){
         boolean transactionsDone =true;
         switch(numberOfTransaction){
@@ -62,7 +57,7 @@ public class ATMSystem {
             case 2:
                 transactionsDone = account.withdraw(amount);
                 if(!transactionsDone){
-                    System.out.println("Insufficient Balance !! \n Check your Balance");
+                    System.out.println("Insufficient Balance! \nCheck your Balance");
                 }
                 break;
         }
@@ -84,11 +79,17 @@ public class ATMSystem {
             System.out.println("Transaction Done Successfully.");
         }
     }
-    public void changePassword(UserAccount account, int newPassword) {
-        account.setPassword(newPassword);
-        filesHandler.saveUserAccount(UsersAccounts);
-        System.out.println("Password changed successfully! \n Your account password is: " + account.getPassword());
+
+    public void changePassword(UserAccount account, int newPassword,int confirmPassword) {
+        if (newPassword != confirmPassword) {
+            System.out.println("Passwords do not match");
+        }else {
+            account.setPassword(newPassword);
+            filesHandler.saveUserAccount(UsersAccounts);
+            System.out.println("Password changed successfully!");
+        }
     }
+
     public static void moreTransactions() {
         {
             Scanner input = new Scanner(System.in);
@@ -97,9 +98,18 @@ public class ATMSystem {
             int num = input.nextInt();
             input.nextLine();
             if (num == 0) {
-                System.out.println("thank you for using ATM System ! , see you soon!");
+                System.out.println("thank you for using ATM System! , see you soon!");
                 System.exit(0);
             }
         }
+    }
+
+    private String generateAccountNumber() {
+        String accountNumber;
+        Random random = new Random();
+        do {
+            accountNumber = String.valueOf(random.nextInt(9999999));
+        }while(UsersAccounts.containsKey(accountNumber));
+        return accountNumber;
     }
 }

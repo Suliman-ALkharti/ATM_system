@@ -17,28 +17,44 @@ public class UserAccount {
         this.balance = balance;
         this.AccountNumber = AccountNumber;
     }
+
     public String getFullName() {
         return FullName;
     }
+
     public String getPhoneNumber() {
         return phoneNumber;
     }
-    public int getPassword() {
-        return password;
-    }
-    public Double getBalance() {
-        return balance;
-    }
+
     public String getAccountNumber() {
         return AccountNumber;
     }
+
+    public Double getBalance() {
+        return balance;
+    }
+
+    public int getPassword() {
+        return password;
+    }
+
+    public int getAttemptsOfLogin() {
+        return AttemptsOfLogin;
+    }
+
+    public boolean isLocked() {
+        return locked;
+    }
+
     public void setPassword(int password) {
         this.password = password;
     }
+
     public void deposit(double amount) {
         this.balance += amount;
         System.out.println("Deposited " + amount + " to " + FullName);
     }
+
     public boolean withdraw(double amount) {
         if(amount <= this.balance){
             this.balance -= amount;
@@ -48,16 +64,16 @@ public class UserAccount {
             return false;
         }
     }
+
     public void CheckBalance() {
         System.out.println("Your balance is " + this.balance);
     }
+
     public void ViewTransactionsHistory(UserAccount account,String filter) {
         System.out.println("Your transactions history:");
         filesHandler.viewTransactionHistory(account.getAccountNumber(),filter);
     }
-    public int getAttemptsOfLogin() {
-        return AttemptsOfLogin;
-    }
+
     public void increasedAttemptsOfLogin() {
         AttemptsOfLogin++;
         if (AttemptsOfLogin >= 3) {
@@ -66,12 +82,11 @@ public class UserAccount {
             System.out.println("Contact your bank to unlock your account!");
         }
     }
+
     public void resetAttemptsOfLogin() {
         AttemptsOfLogin = 0;
     }
-    public boolean isLocked() {
-        return locked;
-    }
+
     @Override
     public String toString() {
         return  AccountNumber + "," + FullName + "," + phoneNumber + "," + password + "," + balance;

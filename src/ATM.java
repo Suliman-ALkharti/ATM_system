@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
-    private static ATMSystem atmSystem;
+public class ATM {
 
     public static void main(String[] args) {
         ATMSystem atmSystem = new ATMSystem();
@@ -59,9 +58,11 @@ public class Main {
                                     ATMSystem.moreTransactions();
                                     break;
                                 case 5:
-                                    System.out.print("Enter a new password: ");
+                                    System.out.print("Enter new password: ");
                                     int newPassword = input.nextInt();
-                                    atmSystem.changePassword(account,newPassword);
+                                    System.out.print("Confirm new password: ");
+                                    int ConfirmPassword = input.nextInt();
+                                    atmSystem.changePassword(account,newPassword,ConfirmPassword);
                                     ATMSystem.moreTransactions();
                                     break;
                                 case 6:
@@ -93,7 +94,7 @@ public class Main {
                     ATMSystem.moreTransactions();
                     break;
                 case 4:
-                    System.out.println("thank you for using ATM System ! , see you soon!");
+                    System.out.println("thank you for using ATM System!, see you soon!");
                     System.exit(0);
                 default:
                     System.out.println("Invalid choice. Try again.");
