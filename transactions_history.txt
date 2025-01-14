@@ -1,0 +1,13 @@
+2302846, Deposit, the Amount: 7000.0, Tue Jan 14 19:26:16 GST 2025
+2302846, WithDraw, the Amount: 2000.0, Tue Jan 14 19:26:27 GST 2025
+2302846, WithDraw, the Amount: 1444.0, Tue Jan 14 19:27:04 GST 2025
+2302846, Deposit, the Amount: 6000.0, Tue Jan 14 19:27:14 GST 2025
+2302846, View Transaction History, the Amount: 9556.0, Tue Jan 14 19:27:31 GST 2025
+7037665, WithDraw, the Amount: 222.0, Tue Jan 14 19:29:50 GST 2025
+7037665, WithDraw, the Amount: 55.5, Tue Jan 14 19:30:02 GST 2025
+7037665, Deposit, the Amount: 5000.0, Tue Jan 14 19:30:16 GST 2025
+7037665, View Transaction History, the Amount: 6722.5, Tue Jan 14 19:30:26 GST 2025
+2302846, WithDraw, the Amount: 5000.5, Tue Jan 14 19:33:35 GST 2025
+2302846, View Transaction History, the Amount: 4555.5, Tue Jan 14 19:34:40 GST 2025
+7037665, Deposit, the Amount: 1000.0, Tue Jan 14 19:35:50 GST 2025
+7037665, View Transaction History, the Amount: 7722.5, Tue Jan 14 19:35:54 GST 2025
