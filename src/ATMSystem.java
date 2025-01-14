@@ -47,9 +47,10 @@ public class ATMSystem {
     public void findUser (String accountNumber) {
         UserAccount userAccount = UsersAccounts.get(accountNumber);
         if (userAccount != null) {
-            System.out.println("The account exists");
+            System.out.println("Account owner name: " + userAccount.getFullName());
+            System.out.println("Account owner phone number: " + userAccount.getPhoneNumber());
         } else
-            System.out.println("The account does not exist");
+            System.out.println("The account is Invalid");
     }
     public void PerformTransactions (UserAccount account, double amount, int numberOfTransaction){
         boolean transactionsDone =true;
