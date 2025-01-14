@@ -7,7 +7,7 @@ public class Main {
         ATMSystem atmSystem = new ATMSystem();
         Scanner input = new Scanner(System.in);
         while(true) {
-            System.out.println("Welcome to ATM System System ! ");
+            System.out.println("Welcome to            ATM System System ! ");
             System.out.println("1. Login");
             System.out.println("2. Create New Account");
             System.out.println("3. Find User");
