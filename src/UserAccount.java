@@ -1,3 +1,5 @@
+// Suliman Fadi ALkharti
+// 120222098
 
 public class UserAccount {
 
@@ -8,7 +10,6 @@ public class UserAccount {
     private int password;
     private int AttemptsOfLogin;
     private boolean locked;
-    private fileHandler filesHandler;
 
     public UserAccount(String fullName, String phoneNumber, int password, Double balance, String AccountNumber) {
         this.FullName = fullName;
@@ -52,7 +53,7 @@ public class UserAccount {
 
     public void deposit(double amount) {
         this.balance += amount;
-        System.out.println("Deposited " + amount + " to " + FullName);
+        System.out.println(amount + "$ has been deposited.");
     }
 
     public boolean withdraw(double amount) {
@@ -70,8 +71,14 @@ public class UserAccount {
     }
 
     public void ViewTransactionsHistory(UserAccount account,String filter) {
-        System.out.println("Your transactions history:");
-        filesHandler.viewTransactionHistory(account.getAccountNumber(),filter);
+        if (filter.equals("null")) {
+            fileHandler.viewTransactionHistory(account.getAccountNumber(), filter);
+        } else {
+            String[] date = filter.split("/");
+            String spiltDate = date[0] + " " + date[1] + " " + date[2];
+            System.out.println("\t \t Your transactions history in " + spiltDate);
+            fileHandler.viewTransactionHistory(account.getAccountNumber(), spiltDate);
+        }
     }
 
     public void increasedAttemptsOfLogin() {
